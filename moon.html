@@ -1,0 +1,498 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Varsha | Portfolio</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Background */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000000, #151515, #ffffff);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .nav-link {
+            color: white !important;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #aaa !important;
+            transform: translateY(-2px);
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            width: 180px;
+            height: 55px;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.15;
+            filter: blur(2px);
+            animation: cloudMove 25s linear infinite;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: "";
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            width: 80px;
+            height: 80px;
+            top: -40px;
+            left: 35px;
+        }
+
+        .cloud::after {
+            width: 65px;
+            height: 65px;
+            top: -25px;
+            right: 30px;
+        }
+
+        .cloud1 {
+            top: 20%;
+            left: -220px;
+        }
+
+        .cloud2 {
+            top: 38%;
+            left: -300px;
+            animation-delay: 8s;
+            transform: scale(0.7);
+        }
+
+        .cloud3 {
+            top: 55%;
+            left: -250px;
+            animation-delay: 15s;
+            transform: scale(1.2);
+        }
+
+        @keyframes cloudMove {
+            from {
+                transform: translateX(-250px);
+            }
+            to {
+                transform: translateX(130vw);
+            }
+        }
+
+        /* Main Content */
+        .hero-content {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .content-box {
+            text-align: center;
+        }
+
+        .small-title {
+            letter-spacing: 5px;
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .content-box h1 {
+            font-size: 55px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+
+        .content-box p {
+            font-size: 18px;
+            color: #ddd;
+        }
+
+        /* Moon / Profile Circle */
+        .moon-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 35px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .moon {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #ffffff, #d9d9d9, #888);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+            letter-spacing: 4px;
+
+            box-shadow:
+                0 0 20px #fff,
+                0 0 50px #fff,
+                0 0 100px rgba(255,255,255,0.5);
+
+            animation: moonFloat 4s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Moon glow ring */
+        .moon-container::before {
+            content: "";
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: rotateRing 8s linear infinite;
+        }
+
+        .moon-container::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px dashed rgba(255,255,255,0.4);
+            border-radius: 50%;
+            animation: rotateRingReverse 12s linear infinite;
+        }
+
+        @keyframes moonFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes rotateRing {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateRingReverse {
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Buttons */
+        .btn-custom {
+            border: 1px solid white;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            margin: 10px;
+            transition: 0.4s;
+            background: transparent;
+        }
+
+        .btn-custom:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 25px white;
+            transform: translateY(-5px);
+        }
+
+        /* About section */
+        .about {
+            min-height: 60vh;
+            background: white;
+            color: black;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Cursor glow */
+        #cursorGlow {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle,
+                rgba(255,255,255,0.18),
+                transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .moon {
+                width: 190px;
+                height: 190px;
+                font-size: 27px;
+            }
+
+            .moon-container {
+                width: 240px;
+                height: 240px;
+            }
+
+            .content-box h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="cursorGlow"></div>
+
+<!-- HERO -->
+<section class="hero">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">VARSHA</a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Stars -->
+    <div class="star" style="top:12%;left:8%;"></div>
+    <div class="star" style="top:20%;left:20%;"></div>
+    <div class="star" style="top:10%;left:40%;"></div>
+    <div class="star" style="top:25%;left:70%;"></div>
+    <div class="star" style="top:15%;left:88%;"></div>
+    <div class="star" style="top:40%;left:12%;"></div>
+    <div class="star" style="top:45%;left:82%;"></div>
+    <div class="star" style="top:60%;left:25%;"></div>
+    <div class="star" style="top:65%;left:75%;"></div>
+    <div class="star" style="top:30%;left:55%;"></div>
+
+    <!-- Clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <!-- Main -->
+    <div class="container hero-content" id="home">
+
+        <div class="content-box">
+
+            <div class="moon-container">
+
+                <!-- Profile / Moon -->
+                <div class="moon" id="moon">
+                    VARSHA
+                </div>
+
+            </div>
+
+            <div class="small-title">WELCOME TO MY PORTFOLIO</div>
+
+            <h1>VARSHA</h1>
+
+            <p>
+                Creative • Dreamer • Learner
+            </p>
+
+            <div class="mt-4">
+                <a href="#about" class="btn btn-custom">
+                    Explore Me
+                </a>
+
+                <button class="btn btn-custom" onclick="changeMoon()">
+                    ✨ Magic
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="container">
+
+        <h2>About Me</h2>
+
+        <p>
+            Hello! I am <strong>Varsha</strong>.
+            Welcome to my personal portfolio.
+            I enjoy learning new things, exploring technology,
+            listening to music and creating beautiful ideas.
+            This portfolio represents my personality through
+            a simple black-and-white moon theme.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    // Mouse glow
+    const cursorGlow = document.getElementById("cursorGlow");
+
+    document.addEventListener("mousemove", function(event) {
+        cursorGlow.style.left = event.clientX + "px";
+        cursorGlow.style.top = event.clientY + "px";
+    });
+
+
+    // Moon click animation
+    const moon = document.getElementById("moon");
+
+    moon.addEventListener("click", function() {
+
+        moon.style.transform = "scale(1.15)";
+
+        setTimeout(function() {
+            moon.style.transform = "";
+        }, 400);
+
+    });
+
+
+    // Magic button
+    function changeMoon() {
+
+        moon.style.boxShadow =
+            "0 0 30px white, 0 0 80px white, 0 0 150px white";
+
+        moon.style.transform = "scale(1.2) rotate(360deg)";
+
+        setTimeout(function() {
+            moon.style.transform = "";
+        }, 1000);
+    }
+
+
+    // Create extra stars using JavaScript
+    for (let i = 0; i < 20; i++) {
+
+        let star = document.createElement("div");
+
+        star.className = "star";
+
+        star.style.top = Math.random() * 70 + "%";
+        star.style.left = Math.random() * 100 + "%";
+
+        star.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.querySelector(".hero").appendChild(star);
+    }
+
+</script>
+
+</body>
+</html>
+```
